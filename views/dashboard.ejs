@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .table td,
+      th {
+        border: 2px solid grey;
+      }
+
+      .self-info {
+        list-style: none;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .self-info {
+        background-color: beige;
+        line-height: 40px;
+        text-transform: uppercase;
+        width: 15%;
+        padding: 20px;
+      }
+
+      .self-info li {
+        background-color: #3a3737;
+        padding: 10px;
+        color: white;
+        letter-spacing: 3px;
+      }
+
+      .data {
+        width: 80%;
+        padding: 20px 40px 40px 40px;
+      }
+
+      .search-input {
+        width: 50%;
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        margin: 8px;
+        width: 100vw;
+        background-color: rgba(211, 211, 211, 0.333);
+        justify-content: center;
+      "
+    >
+      Log out
+      <button style="margin-left: 5px"><a href="/logout">Logout</a></button>
+    </div>
+    <div class="container" style="display: flex">
+      <div class="self-info">
+        <ul>
+          <h1>My Profile</h1>
+          <li><%= user1.username %></li>
+          <li><%= user1.fullname %></li>
+          <li><%= user1.gender %></li>
+          <li><%= user1.dob.toString().split(" ").slice(0,4).join(" ") %></li>
+          <li><%= user1.country %></li>
+        </ul>
+      </div>
+      <div class="data">
+        <!--FORM -======================  -->
+
+        <form method="GET" action="/search">
+          <input
+            type="hidden"
+            name="origUsername"
+            value="<%= user1.username %>"
+          />
+          <input
+            type="text"
+            class="search-input"
+            name="username"
+            placeholder="Search username..."
+            required
+          />
+          <button type="submit">Search</button>
+        </form>
+
+        <Table class="table">
+          <tr>
+            <th>Username</th>
+            <th>fullname</th>
+            <th>gender</th>
+            <th>dob</th>
+            <th>country</th>
+          </tr>
+          <% for(let user of users){ %>
+          <tr>
+            <td><%= user.username %></td>
+            <td><%= user.fullname %></td>
+            <td><%= user.gender %></td>
+            <td><%= user.dob.toString().split(" ").slice(0,4).join(" ") %></td>
+            <td><%= user.country %></td>
+          </tr>
+          <%}%>
+        </Table>
+      </div>
+    </div>
+  </body>
+</html>

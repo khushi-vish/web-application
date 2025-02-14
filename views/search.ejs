@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      td,
+      th {
+        border: 2px solid grey;
+      }
+    </style>
+  </head>
+  <body>
+     <% if(newUser){ %>
+        <h1>Data of Username : <%= newUser.username %></h1>
+     <% } %>
+    <Table class="table">
+      <tr>
+        <th>Username</th>
+        <th>fullname</th>
+        <th>gender</th>
+        <th>dob</th>
+        <th>country</th>
+      </tr>
+
+      <% if(newUser){ %>
+
+        <td><%= newUser.username %></td>
+        <td><%= newUser.fullname %></td>
+        <td><%= newUser.gender %></td>
+        <td><%= newUser.dob.toString().split(" ").slice(0,4).join(" ") %></td>
+        <td><%= newUser.country %></td>
+       <% }else{ %>
+        <tr>
+            <td colspan="5"><h2>USER NOT FOUND</h2></td>
+        </tr>
+        <% } %>
+      </tr>
+    </Table>
+    <!-- <a href="http://localhost:3000/<%= origUsername %>/dashboard">Go back</a> -->
+    <a href="/<%= origUsername ? origUsername : 'defaultUser' %>/dashboard">Go back</a>
+
+</body>
+</html>
