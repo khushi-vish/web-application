@@ -33,7 +33,7 @@ This is a web application where users can register, log in, view all users, and 
    node server.js
    
 4. Open the application in the browser via localhost.
- ** http://localhost:3000/ **
+   http://localhost:3000/
 
 Now, you can navigate through the web app and test all the features.  
 
